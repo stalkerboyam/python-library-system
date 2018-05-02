@@ -13,3 +13,5 @@ pip install SQLAlchemy
 create Database In postgres
 
 and import the sql file 
+
+then python app.py
