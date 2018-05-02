@@ -1,0 +1,32 @@
+{% extends "home.html" %}
+
+
+{% block contents %}
+ <h1>All Opertions with users  </h1>
+
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Book</th>
+      <th scope="col">Borrow Date</th>
+      <th scope="col">Return Date </th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+     {% for user in operations %}
+    
+  <tr>
+      <td>{{ user.username }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.borrow_date }}</td>
+      <td>{{ user.return_date }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock contents %}

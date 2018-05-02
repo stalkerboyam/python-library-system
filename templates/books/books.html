@@ -1,0 +1,51 @@
+{% extends "home.html" %}
+
+
+{% block contents %}
+ <h1>All Books <a  class="btn btn-success" href="books/new">Add New</a></h1>
+
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Code</th>
+      <th scope="col">Category</th>
+      <th scope="col">Borrow Fee</th>
+	  <th scope="col">Quantity</th>
+	  <th scope="col">Available Quantity</th>
+{% for user in userdata%}
+
+   {%if user.role==1 %}   <th scope="col">Borrow/Return</th> {% endif %}
+	  <th scope="col">Edit</th>
+	  <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+     {% for book in books %}
+    
+    
+  <tr>
+      <td>{{ book.name }}</td>
+      <td>{{ book.book_code }}</td>
+      <td>{{ book.category_name }}</td>
+      <td>{{ book.price }}</td>
+	    <td>{{ book.quantity }}</td>
+      <td>{{ book.available_quantity }}</td>
+{%if user.role==1 %}
+       <td><a href="books/borrow/{{book.id}}" class="btn btn-info">Borrow</a></td>
+
+{% endif %}
+
+
+
+      <td><a href="books/edit/{{ book.id }}" class="btn btn-info">Edit</a></td>
+      <td><a href="books/delete/{{ book.id }}" class="btn btn-danger">Delete</a></td>
+    </tr>
+    {% endfor %}{% endfor %}
+  </tbody>
+</table>
+
+
+    
+
+{% endblock contents %}
